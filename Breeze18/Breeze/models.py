@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     contact = models.CharField(max_length=18 , null=False)
-    college = models.CharField(max_length= 100, null=False)
+    # college = models.CharField(max_length= 100, null=False)
     def __unicode__(self):
         return self.user
 
@@ -37,7 +37,7 @@ class Registration(models.Model):
     userId = models.ForeignKey(Profile, on_delete=models.CASCADE, null=False)
     transaction_id=models.CharField(max_length = 200, default="Unpaid")
     def __unicode__(self):
-    	return '%s by %s'%(self.eventId,self.userId) 
+    	return '%s by %s'%(self.eventId,self.userId)
 
 class Formdata(models.Model):
     name= models.CharField(max_length = 32, null=False)
