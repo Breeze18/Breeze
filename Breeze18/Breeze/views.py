@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth import authenticate, login
-from .models import .
+from .models import *
 
 # Create your views here.
 
@@ -56,12 +56,12 @@ def register(request):
 
 
 
-
-def login_view(request):
-   redirect_to = request.REQUEST.get('next', '')
-   if request.method=='POST':
-      #create login form...
-      if valid login credentials have been entered:
-         return HttpResponseRedirect(redirect_to)
-   #...
-   return render_to_response('login.html', locals())
+# 
+# def login_view(request):
+#    redirect_to = request.REQUEST.get('next', '')
+#    if request.method=='POST':
+#       #create login form...
+#       if valid login credentials have been entered:
+#          return HttpResponseRedirect(redirect_to)
+#    #...
+#    return render_to_response('login.html', locals())
