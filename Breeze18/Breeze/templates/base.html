@@ -16,6 +16,42 @@
 </head>
 
 <body>
+
+  <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+          <div class="container">
+              <div class="navbar-header">
+
+                  <!-- logo -->
+                  <div class="site-branding">
+                      <a class="logo" href="index.html">
+                          Breeze'18
+                      </a>
+                  </div>
+
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+
+              </div><!-- /.navbar-header -->
+
+              <div class="collapse navbar-collapse" id="navbar-items">
+                  <ul class="nav navbar-nav navbar-right">
+
+                      <!-- navigation menu -->
+                      <li class="active"><a data-scroll href="#about">About</a></li>
+                      <li><a data-scroll href="#gallery">Highlights</a></li>
+                      <li><a href="/events/">Events</a></li>
+                      <li><a data-scroll href="#contact">Contact Us</a></li>
+                      <li><a href="#modal" class="btn btn-login" data-toggle="modal">Login & Register</a></li>
+
+                  </ul>
+              </div>
+          </div><!-- /.container -->
+      </nav>
+
   {% block content %}{% endblock %}
 </body>
 </html>
