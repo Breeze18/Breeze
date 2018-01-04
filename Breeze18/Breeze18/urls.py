@@ -19,5 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('Breeze.urls')),
-    url(r'', include('registration.backends.default.urls')),
+    # url(r'', include('registration.backends.default.urls')),
 ]
