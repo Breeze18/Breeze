@@ -1,7 +1,1023 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-  Hello, World
-</div>
+{% load static %}
+
+<div id="modal" class="modal fade">
+       <div class="modal-dialog">
+           <div class="modal-content" style="background-color:#FFF0D9;">
+               <div class="modal-header" style="background-color:#FFF0D9; padding-bottom: 0px !important;">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><center>
+                   <h4 class="modal-title" style="font-size: 20px; letter-spacing: 5px;font-family:'Montserrat';">Login & Register</h4></center>
+               </div>
+
+               <div class="modal-body">
+               <div class="col-md-6 col-sm-6 no-padng">
+                   <div class="model-l">
+                   <form method="post" id="logFrm" class="log-frm" name="logFrm">
+                   <ul>
+                       <li>Email</li>
+                       <li> <input type="text" placeholder="User ID" id="userName" name="userName" class="form-control" onfocus="checkNullProf();"></li>
+                       <li>Password</li>
+                       <li><input type="password" placeholder="Password" id="password" name="password" class="form-control" onfocus="checkNullProf();"></li>
+                       <li><br/><button type="button" onclick="userLogin();" id="logBtn" class="btn btn-default">Submit</button></li>
+                       <div style="display:none;" id="loginFail" class="sign">
+                       <li> <font color="red">  Username or password is incorrect.</font></li>
+                       </div>
+                          </ul>
+                           </form>
+                               <div class="clearfix"></div>
+                                <form method="post" id="logFrm1" class="log-frm" name="logFrm1">
+                               <ul>
+                                   <li>
+                                       <a class="for-got" onclick="ayantoggle();" href="javascript:;">Forgot your password?</a>
+                                       <div class="forgot">
+                                       <ul>
+                                       <li><p>Enter your Email Address here to receive a link to change password.</p></li>
+                                       <li>Email Id</li>
+                                       <li><input type="text" placeholder="Your email id" id="forgetemailId" class="form-control" name="forgetemailId"></li>
+                                       <li><button type="button" class="btn btn-default" onclick="forgot();">Send Mail</button></li>
+                                   </ul>
+                               </div>
+                           </li>
+                       </ul>
+                </form>
+                   </div>
+                   </div>
+                   <div class="col-md-6 col-sm-6 no-padng">
+                       <div class="model-r">
+                       <div class="o-r">
+                       <span>OR</span>
+                       </div>
+                            <form method="post" id="userRegisterFrm" class="log-frm" name="userRegisterFrm">
+                           <ul>
+                            <li>Name</li>
+                            <li><input type="text" placeholder="Name" name="fName" class="form-control"></li>
+                            <li>Email</li>
+                            <li><input type="text" placeholder="Email Id" name="emailId" class="form-control"></li>
+                            <li>Contact</li>
+                            <li><input type="text" placeholder="Contact" name="contact" class="form-control"></li>
+                            <li>Password</li>
+                            <li><input type="password" placeholder="Password" name="password" class="form-control"></li>
+                            <li>Confirm Password</li>
+                            <li><input type="password" placeholder="Confirm Password" name="repassword" class="form-control"></li>
+                            <br> <li><button type="button" name="userRegBtn" class="btn btn-default">Signup Now</button></li>
+                            <div style="display:none;" class="sign greenglow">
+                                <li>   <i class="icon-check"></i><br>
+                                    <font color="red">
+                                    User registration successful.<br>
+                                     Your login Url already send to your email.
+
+                                    </font></li>
+                         </div>
+                          <div style="display:none;" id="regnSuc11" class="sign redglow">
+                              <li>   <i class="icon-mail"></i><br>
+                                  <font color="red">    Email Exist.</font></li>
+                         </div>
+                       </ul>
+                   </form>
+                       </div>
+                       </div>
+
+                       <div class="clearfix"></div>
+                   </div>
+           </div>
+       </div>
+   </div>
+
+    <header id="site-header" class="site-header valign-center">
+        <div class="intro">
+            <a class="btn btn-learn-more" href="/events/" style="margin-top: 450px;text-transform: uppercase;">Events</a>
+        </div>
+    </header>
+
+    <section id="about" class="section about">
+        <div class="container">
+        <div class="headingimg slideanim">
+        <img class="img-responsive ribbon" src="{% static 'assets/images/aboutheading.svg' %}">
+        <h3 class="text-center ribbonheading">About</h3>
+        </div>
+        <br>
+            <div class="row slideanim">
+                <div class="col-sm-4">
+                  <img alt="" class="img-responsive" id="aboutimg" width="auto" src="{% static 'assets/images/about.png' %}">
+                </div><!-- /.col-sm-6 -->
+
+                <div class="col-sm-7 col-sm-offset-1">
+
+                    <h2>About Shiv Nadar University</h2>
+
+                    <p>Shiv Nadar University is an international, multidisciplinary, research-led university offering academic programs at various
+                        degree levels with a range of schools. The campus is erected on a sprawling expanse of 286 acres and is located in the
+                        National Capital Region. The University has achieved many milestones since its inception in 2011. In it’s maiden year,
+                        SNU had the honour of having Late Dr APJ Abdul Kalam inspiring the young minds at SNU. Back in January 2016, the University
+                        was officially inaugurated by the Hon’ble President of India- Shri Pranab Mukherjee. Dr. Raghuram Rajan Former Governor
+                        of Reserve Bank of India, Ms. Vanitha Narayan- Managing Director, IBM India Private Limited and Dr. Deepak Parekh- Chairman,
+                        HDFC Bank, Mr. Mike Lawrie, Chairman, President and CEO, DXC Technology are names of the few dignitaries that have graced
+                        SNU as chief guests for our convocation ceremonies. In addition to this, SNU is also a wonderful platform for all those
+                        who wish to make a significant difference in their stream of choice. To encourage young minds with extraordinary ideas,
+                        SNU has initiatives such as the Atal Incubation Centre, Niti Aayog.</p>
+                </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+            <div class="text-center slideanim">
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase; margin-top: 30px; margin-bottom: 30px;">Learn More</a>
+            </div>
+        </div><!-- /.container -->
+    </section>
+<!--
+    <section id="past" class="section bg-image-1 facts text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-aftermovie">
+                    <h3 class="aftermovie-title">Breeze'16</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/SNeeRbHCaXs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-aftermovie">
+                    <h3 class="aftermovie-title">Breeze'15</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zsHv5E0SpZU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+<!--
+    <section id="performers" class="section speakers" style="margin-top: -50px;">
+        <div class="container">
+
+        <div class="headingimg slideanim">
+        <img class="img-responsive ribbon" id="perfribbon" src="assets/images/performersimg.svg">
+        <h3 class="section-title text-center ribbonheading">Past Performers</h3>
+        </div>
+        <br>
+
+            <div class="row slideanim">
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Neha Kakkar" class="img-responsive center-block" src="assets/images/performers/neha-kakkar.png">
+                      </figure>
+                      <h4>Neha Kakkar</h4>
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Kanan Gill" class="img-responsive center-block" src="assets/images/performers/kanan-gill.png">
+                      </figure>
+
+                      <h4>Kanan Gill</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Javed Ali" class="img-responsive center-block" src="assets/images/performers/javed-ali.png">
+                      </figure>
+
+                      <h4>Javed Ali</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Anish Sood" class="img-responsive center-block" src="assets/images/performers/anish-sood.png">
+                      </figure>
+
+                      <h4>Anish Sood</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+
+                <div class="col-md-3">
+
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Zaeden" class="img-responsive center-block" src="assets/images/performers/zaeden.png">
+                      </figure>
+
+                      <h4>Zaeden</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Raghuram" class="img-responsive center-block" src="assets/images/performers/raghuram.png">
+                      </figure>
+
+                      <h4>Raghuram</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="Astitva" class="img-responsive center-block" src="assets/images/performers/astitva.jpg">
+                        </figure>
+
+                        <h4>Astitva</h4>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="Parikarma" class="img-responsive center-block" src="assets/images/performers/parikarma.jpg">
+                        </figure>
+
+                        <h4>Parikarma</h4>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+
+
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                      <figure>
+                          <img alt="Hriday Gattani" class="img-responsive center-block" src="assets/images/performers/hriday-gattani.png">
+                      </figure>
+
+                      <h4>Hriday Gattani</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                      <figure>
+                          <img alt="DJ Sin" class="img-responsive center-block" src="assets/images/performers/sin.png">
+                      </figure>
+
+                      <h4>DJ Sin</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                      <figure>
+                          <img alt="Paradigm Shift" class="img-responsive center-block" src="assets/images/performers/paradigm-shift.jpg">
+                      </figure>
+
+                      <h4>Paradigm Shift</h4>
+
+                      <ul class="social-block">
+                          <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                      </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>-->
+<!---->
+<!--
+    <section id="registration" class="section registration">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Registration &amp; Pricing</h3>
+                </div>
+            </div>
+
+            <form action="#" id="registration-form">
+                <div class="row">
+                    <div class="col-md-12" id="registration-msg" style="display:none;">
+                        <div class="alert"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name" id="fname" name="fname" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" id="lname" name="lname" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Phone" id="cell" name="cell" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Address" id="address" name="address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Zip Code" id="zip" name="zip" required>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="city" id="city" required>
+                                <option readonly>City</option>
+                                <option>City Name 1</option>
+                                <option>City Name 2</option>
+                                <option>City Name 3</option>
+                                <option>City Name 4</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="program" id="program" required>
+                                <option readonly>Select Your Program</option>
+                                <option>Program Name 1</option>
+                                <option>Program Name 2</option>
+                                <option>Program Name 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt20">
+                    <button type="submit" class="btn btn-black" id="registration-submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>-->
+
+    <!--<section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Event Schedule</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="09:00"></time> - <time datetime="22:00"></time>
+                        </div>
+                        <h3>Name</h3>
+                        <p>Place</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="10:00"></time> - <time datetime="22:00"></time>
+                        </div>
+                        <h3>Name</h3>
+                        <p>Place</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="10:00"></time> - <time datetime="22:00"></time>
+                        </div>
+                        <h3>Name</h3>
+                        <p>Place</p>
+                    </div>
+                </div>
+            </div>
+    </section>
+-->
+
+
+    <section id="gallery" class="section" style="background-color: #A0E19F;">
+    <div class="container">
+<div class="headingimg slideanim">
+        <img class="img-responsive ribbon" id="galleryimg" src="{% static 'assets/images/galleryimg.svg' %}">
+        <h3 class="text-center ribbonheading">Highlights</h3>
+        </div>
+<br><br>
+        <div class="row slideanim">
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators my-slider">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                  </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner"  style="width: auto;height: 500px;">
+                  <div class="item active">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-1.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-2.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-3.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-4.jpg' %}">
+                  </div>
+
+                  <div class="item">
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/photos/photos-5.jpg' %}">
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="text-center slideanim">
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase; margin-top: 60px;">View All</a>
+            </div>
+    </div>
+    </section>
+
+<!--
+    <section id="partner" class="section partner">
+        <div class="container">
+            <div class="row slideanim">
+                <div class="col-md-12">
+                    <h3 class="section-title">Sponsors</h3>
+                </div>
+            </div>
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-1"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-2"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-3"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-4"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-5"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-6"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-7"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-8"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-9"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-10"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-11"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-12"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-13"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-14"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-15"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-16"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-17"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-18"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-19"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-20"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-21"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-22"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-23"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-24"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-25"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-26"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-27"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-28"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-29"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-30"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-31"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-32"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-33"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-34"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-35"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-36"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-37"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-38"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-39"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-40"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-41"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-42"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-43"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-44"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-45"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-46"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-47"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-48"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-49"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-50"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-51"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-52"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-53"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-54"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-55"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-56"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-57"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-58"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-59"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-60"></a>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-61"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-62"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-63"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-64"></a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="partner-box partner-box-65"></a>
+                </div>
+            </div>
+    </section>
+-->
+    <section id="brochure" class="section bg-image-1 contribution">
+        <div class="container slideanim">
+            <div class="row">
+                <div class="col-md-6" style="border-right: 1px solid white; height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Meet the Team</h3>
+
+                    <p>Download the Breeze'18 Brochure here.</p>
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase;">View Team</a>
+
+                </div>
+                <!--<div class="col-md-4" style="border-right: 1px solid white;height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Download Breeze'18 Brochure</h3>
+
+                    <p>Download the Breeze'18 Brochure here.</p>
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase;">Download Brochure</a>
+          </div>-->
+                <div class="col-md-6" style="height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Sponsors</h3>
+
+                    <p>Meet our partners</p>
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase;">View Sponsors</a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 5%">
+                <div class="col-md-4" style="border-right: 1px solid white; height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Accomodations</h3>
+
+                    <p>Accomodations</p>
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase;">Accomodations</a>
+
+                </div>
+                <div class="col-md-4" style="border-right: 1px solid white;height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Hospitality</h3>
+
+                    <p>Hospitality</p>
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase;">Hospitality</a>
+          </div>
+                <div class="col-md-4" style="height: 150px;">
+                    <h3 class="text-uppercase mt0 font-400">Transportation</h3>
+
+                    <p>Transportation</p>
+            <a class="btn btn-learn-more" data-scroll href="#about" style="text-transform: uppercase;">Transportation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact-us" class="section speakers" style="background-color: #96C9C4;">
+        <div class="container">
+        <div class="headingimg slideanim">
+        <img class="img-responsive ribbon" id="contactimg" src="{% static 'assets/images/contactimg.svg' %}">
+        <h3 class="text-center ribbonheading">Contact Us</h3>
+        </div>
+            <div class="row slideanim">
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Suryansh Amit Chandak" class="img-responsive center-block" src="{% static 'assets/images/team/suryansh.jpg' %}">
+                      </figure>
+                      <h4>Suryansh Amit Chandak</h4>
+                      <p style="text-transform: none; font-weight: bolder;">Chairperson<br><a href="tel:+919910061965">9910061965</a></p>
+                      <ul class="social-block">
+                          <!--<li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>-->
+                      </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Mohit Kolluri" class="img-responsive center-block" src="{% static 'assets/images/team/mohit.jpg' %}">
+                      </figure>
+
+                      <h4>Mohit Kolluri</h4>
+                      <p style="text-transform: none; font-weight: bolder;">Presider<br><a href="tel:+919704132361">9704132361</a></p>
+
+                      <ul class="social-block">
+                          <!--<li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>-->
+                      </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Sneha Ramesh Iyer" class="img-responsive center-block" src="{% static 'assets/images/team/sneha.jpg' %}">
+                      </figure>
+
+                      <h4>Sneha Ramesh Iyer</h4>
+                      <p style="text-transform: none; font-weight: bolder;">Public Relations<br><a href="tel:+918130220157">8130220157</a></p>
+                      <ul class="social-block">
+                          <!--<li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>-->
+                      </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-3">
+
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Anirudha Singharoy" class="img-responsive center-block" src="{% static 'assets/images/team/anirudha.jpg' %}">
+                      </figure>
+
+                      <h4>Anirudha Singharoy</h4>
+                      <p style="text-transform: none; font-weight: bolder;">Administrator<br><a href="tel:+919810837270">9810837270</a></p>
+                      <ul class="social-block">
+                          <!--<li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>-->
+                      </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row slideanim">
+                <div class="col-md-3">
+
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Paritosh Kanhe" class="img-responsive center-block" src="{% static 'assets/images/team/paritosh.jpg' %}">
+                      </figure>
+
+                      <h4>Paritosh Kanhe</h4>
+                      <p style="text-transform: none; font-weight: bolder;">Partnerships<br><a href="tel:+919599282081">9599282081</a></p>
+                      <ul class="social-block">
+                          <!--<li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>-->
+                      </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="speaker">
+                      <figure>
+                          <img alt="Kanak Ghiya" class="img-responsive center-block" src="{% static 'assets/images/team/kanak.jpg' %}">
+                      </figure>
+
+                      <h4>Kanank Ghiya</h4>
+                      <p style="text-transform: none; font-weight: bolder;">Marketing and Promotion<br><a href="tel:+918527713974">8527713974</a></p>
+                      <ul class="social-block">
+                          <!--<li><a href=""><i class="ion-social-twitter"></i></a></li>
+                          <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                          <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                          <li><a href=""><i class="ion-social-googleplus"></i></a></li>-->
+                      </ul>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row slideanim">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1752.7575377794187!2d77.57285340813102!3d28.524233995615173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb4eaaaaaaab%3A0x321412756718874c!2sShiv+Nadar+University!5e0!3m2!1sen!2sin!4v1507474422350" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!--<section id="faq" class="section faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Event FAQs</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> What is the price of the ticket ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <h3>Hello</h3>
+                                    <p>Lorem Ipsum</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> What is included in my ticket ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Office address ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> How should I dress ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFive">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive"> I have specific questions that are not addressed here. Who can help me ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+-->
+  
 {% endblock %}

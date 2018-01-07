@@ -18,7 +18,7 @@ def sponsor(request):
     return render(request, 'base.html')
 
 def accomodation(request):
-    return render(request, 'base.html')
+    return render(request, 'accomodation.html')
 
 def transport(request):
     return render(request, 'base.html')

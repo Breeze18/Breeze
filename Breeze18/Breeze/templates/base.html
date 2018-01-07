@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
 
-  <title>Breeze-18</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0,
+maximum-scale=1.0, user-scalable=no" />
 
+    <title>Breeze'18</title>
   <!-- Add additional CSS in static file -->
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/breeze.css' %}">
+
+  <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/breeze.css' %}">
   <!-- <> -->
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#site-nav">
 
   <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
           <div class="container">
@@ -53,5 +57,26 @@
       </nav>
 
   {% block content %}{% endblock %}
+
+  <footer class="site-footer">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p class="site-info">&copy; 2017, Breeze Web and App <a href="http://priyanshrastogi.com">Team</a>.</p>
+                      <ul class="social-block">
+                          <li><a href="https://www.facebook.com/snu.breeze/"><i class="ion-social-facebook"></i></a></li>
+                          <li><a href="https://twitter.com/snu_breeze"><span class="ion-social-twitter"></span></a></li>
+                          <li><a href="https://www.instagram.com/breeze.snu/"><i class="ion-social-instagram"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </footer>
+  <!-- script -->
+    <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bower_components/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/login.js' %}">
 </body>
 </html>
