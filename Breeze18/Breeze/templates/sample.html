@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Testing</title>
+  </head>
+  <body>
+    {% for event in events %}
+    <div>
+      {{ event.description }}
+      <br>
+      {{ event.prize }}
+      <br>
+      {{ event.rules }}
+
+      <div class="contact-placeholder">
+        <p>{{ event.contact_pr }}{{ event.contact_pr }}</p>
+        <p>{{ event.contact_pr }}{{ event.contact_pr }}</p>        
+        <p>{{ event.contact_pr }}{{ event.contact_pr }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </body>
+</html>
