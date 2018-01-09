@@ -1,0 +1,180 @@
+<!Doctype html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events - Breeze'18</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static "assets/css/specificevent.css" %}">
+</head>
+<body style="background-color:#A0E19F" >
+	<div class="container" id="top" style="background-color:#FFF0D9;">
+	<legend><h1 style="font-size: 20px; letter-spacing: 5px; text-transform: uppercase;"><center>{{ subcategory }} EVENTS</center></h1></legend>
+		
+		<ul class="nav nav-tabs nav-justified" style="background-color: #dacdba;font-family:'Montserrat'; border-radius: 0px;">
+			{% for event in events %}
+			{% if forloop.first %}
+			<li class="active"><a data-toggle="tab" href="#{{ event.id }}">{{ event.name }}</a>
+			</li>
+			{% else %}
+			<li><a data-toggle="tab" href="#{{ event.id }}">{{ event.name }}</a></li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+		<div class="container">
+			<div class="tab-content">
+				 {% for event in events %}
+				 {% if forloop.first %}
+				<div class="tab-pane fade in active" id="{{ event.id }}">
+				 {% else %}
+				<div class="tab-pane fade" id="{{ event.id }}">
+				 {% endif %}
+					<div class="row">
+						<h2 class="event-heading"><b>{{ event.name }}</b></h2>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Description</b></h3>
+						<p>{{ event.description }}</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Rules</b></h3>
+						<p>{{ event.rules }}</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Prize</b></h3>
+						<p><b>Prize Worth: {{ event.prize }}</b><br/>
+						</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Details</b></h3>
+						<p><b>Date: {{ event.date }}</b><br/>
+						<b>Venue: {{ event.venue }}</b><br/>
+						</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Contact</b></h3>
+						<p><b>{{ event.contact_market }} - <a href="tel:{{ event.phone_market }}">{{ event.phone_market }}</b></a><br/>
+						<b>{{ event.contact_spons }} - <a href="tel:{{ event.phone_spons }}">{{ event.phone_spons }}</b></a><br/>
+						<b>{{ event.contact_pr }} - <a href="tel:{{ event.phone_pr }}">{{ event.phone_pr }}</b></a><br/>
+						</p>
+						<br><br>
+					</div>
+					<div class="row">
+							<a class="btn btn-block" href="/events/" style="text-transform: uppercase;">Register</a>
+							<br>
+					</div>
+				</div>
+				{% endfor %}
+				<!-- <div class="tab-pane fade" id="event2">
+					<div class="row">
+						<h2 class="event-heading"><b>EVENT-2</b></h2>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Description</b></h3>
+						<p>Shiv Nadar University is an international,multidiscplinary,research-led university 
+					offering academic programs at various degree levels with a range of schools.The campus iserrected on a sprwaling
+					expense of 286 acres and is located in the National Capital Region.</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Rules</b></h3>
+						<p> 1. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+						<p> 2.  Levels with a range of schools.The campus iserrected on a sprwaling
+							expense of 286 acres and is located in the National Capital Region.</p>
+						<p> 3. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+						<p> 4. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Details</b></h3>
+						<p><b>Date:</b><br/>
+						<b>Time:</b><br/>
+						<b>Venue:</b><br/>
+						</p>
+						<br><br>
+					</div>
+					<div class="row">
+							<a class="btn btn-block" href="/events/" style="text-transform: uppercase;">Register</a>
+							<br>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="event3">
+					<div class="row">
+						<h2 class="event-heading"><b>EVENT-3</b></h2>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Description</b></h3>
+						<p>Shiv Nadar University is an international,multidiscplinary,research-led university 
+					offering academic programs at various degree levels with a range of schools.The campus iserrected on a sprwaling
+					expense of 286 acres and is located in the National Capital Region.</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Rules</b></h3>
+						<p> 1. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+						<p> 2.  Levels with a range of schools.The campus iserrected on a sprwaling
+							expense of 286 acres and is located in the National Capital Region.</p>
+						<p> 3. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+						<p> 4. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Details</b></h3>
+						<p><b>Date:</b><br/>
+						<b>Time:</b><br/>
+						<b>Venue:</b><br/>
+						</p>
+						<br><br>
+					</div>
+					<div class="row">
+							<a class="btn btn-block" href="/events/" style="text-transform: uppercase;">Register</a>
+							<br>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="event4">
+					<div class="row">
+						<h2 class="event-heading"><b>EVENT-4</b></h2>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Description</b></h3>
+						<p>Shiv Nadar University is an international,multidiscplinary,research-led university 
+					offering academic programs at various degree levels with a range of schools.The campus iserrected on a sprwaling
+					expense of 286 acres and is located in the National Capital Region.</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Rules</b></h3>
+						<p> 1. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+						<p> 2.  Levels with a range of schools.The campus iserrected on a sprwaling
+							expense of 286 acres and is located in the National Capital Region.</p>
+						<p> 3. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+						<p> 4. Shiv Nadar University is an international,multidiscplinary,research-led university 
+							offering academic programs at various degree</p>
+					</div>
+					<div class="row">
+						<h3 class="captions"><b>Details</b></h3>
+						<p><b>Date:</b><br/>
+						<b>Time:</b><br/>
+						<b>Venue:</b><br/>
+						</p>
+						<br><br>
+					</div>
+					<div class="row">
+							<a class="btn btn-block" href="/events/" style="text-transform: uppercase;">Register</a>
+							<br>
+					</div>
+				</div>
+			</div>-->
+	</div>
+		</div> 
+		<br><br><br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static "assets/js/event.js" %}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	
+	<form method="post" action="/forgotPassword/{{ hashkey }}">
+		{% csrf_token %}
+		<input type="password" name="password">
+		<input type="password" name="confirmpass">
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

@@ -13,7 +13,7 @@ maximum-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" href="{% static 'assets/css/breeze.css' %}">
 
   <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bower_components/ionicons/css/ionicons.min.css' %}">
   <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
   <link rel="stylesheet" href="{% static 'assets/css/breeze.css' %}">
   <!-- <> -->
@@ -27,7 +27,7 @@ maximum-scale=1.0, user-scalable=no" />
 
                   <!-- logo -->
                   <div class="site-branding">
-                      <a class="logo" href="index.html">
+                      <a class="logo" href="/">
                           Breeze'18
                       </a>
                   </div>
@@ -46,11 +46,21 @@ maximum-scale=1.0, user-scalable=no" />
 
                       <!-- navigation menu -->
                       <li class="active"><a data-scroll href="#about">About</a></li>
+                      <li><a href="#modalEvent" data-toggle="modal">Events</a></li>
                       <li><a data-scroll href="#gallery">Highlights</a></li>
-                      <li><a href="/events/">Events</a></li>
-                      <li><a data-scroll href="#contact">Contact Us</a></li>
-                      <li><a href="#modal" class="btn btn-login" data-toggle="modal">Login & Register</a></li>
-
+                      <li><a data-scroll href="#contact">Team</a></li>
+                      <li><a data-scroll href="#contact">Partners</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.profile.name }} <i class="ion-android-arrow-dropdown icon-ion"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/me">My Purchases</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="#modal" data-toggle="modal">Login & Register</a></li>
+                    {% endif %}
                   </ul>
               </div>
           </div><!-- /.container -->
@@ -62,10 +72,10 @@ maximum-scale=1.0, user-scalable=no" />
           <div class="container">
               <div class="row">
                   <div class="col-md-12">
-                      <p class="site-info">&copy; 2017, Breeze Web and App <a href="http://priyanshrastogi.com">Team</a>.</p>
+                      <p class="site-info">&copy; 2018, Breeze Web and App <a href="https://priyanshrastogi.com">Team</a>.</p>
                       <ul class="social-block">
                           <li><a href="https://www.facebook.com/snu.breeze/"><i class="ion-social-facebook"></i></a></li>
-                          <li><a href="https://twitter.com/snu_breeze"><span class="ion-social-twitter"></span></a></li>
+                          <li><a href="https://twitter.com/snu_breeze"><i class="ion-social-twitter"></i></a></li>
                           <li><a href="https://www.instagram.com/breeze.snu/"><i class="ion-social-instagram"></i></a></li>
                       </ul>
                   </div>
