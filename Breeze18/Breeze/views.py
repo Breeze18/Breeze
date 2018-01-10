@@ -23,36 +23,63 @@ def specificEventView(request, category, subcategory):
     #see "sample.html" for usage
     events = Event.objects.filter(category=category[0]).filter(subCategory=subcategory)
     context  = {'events': events, 'subcategory': subcategory}
-    return render(request, 'specific_event.html', context=context)
+    return render(request, 'events/specific_event.html', context=context)
 
 def sponsor(request):
     return render(request, 'help/sponsor.html')
 
 #user profile and purchases
-def profile(request):    
-    return render(request,'user.html')
+def profile(request):
+    if request.method == 'GET':
+        if request.user.id is not None:
+            profile = Registration.objects.filter(userId=request.user)
+            context = {'profile':profile}
+            return render(request,'user.html',context=context)
+        else:
+            return HttpResponseRedirect('/')
+    else:
+        e = int(request.POST['event'])
+        event = Event.objects.get(id=e)
+        uid = '18{:02}{:04}'.format(event.id,request.user.id)
+        print(uid)
+        id = ''.join(random.choice(string.ascii_uppercase) for _ in range(8))
+        register = Registration(eventId=event,userId=request.user,registration_id=uid,payable=event.fee)
+        try:
+            register.save();
+        except:
+            return HttpResponseRedirect(next)
+        return HttpResponseRedirect('/me/');
 
-def technical(request):
-    return render(request, 'events/technical.html')
+def cat_view(request, category):
+    if category == "technical":
+        return render(request, 'events/technical.html')
+    elif category == "sports":
+        return render(request, 'events/sports.html')
+    else:
+        return render(request, 'events/cultural.html')
 
+def event_register(request):
+    if request.method == 'POST' and request.user.id is not None:
+        event = Event.objects.get(id=request.POST['event_id'])
+        profile = request.user
+        context = {
+        'user': profile,
+        'event' : event
+        }
+        return render(request, 'events/event_register.html',context=context)
+    else:
+        return render(request, 'index.html')
 
-def cultural(request):
-    return render(request, 'events/cultural.html')
-
-
-def sports(request):
-    return render(request, 'events/sports.html')
 
 def accomodation(request):
     return render(request, 'help/accomodation.html')
 
-
 def transport(request):
     return render(request, 'help/transport.html')
 
-
 def hospitality(request):
     return render(request, 'help/hospitality.html')
+
 
 def login1(request):
     if request.method=="POST":
@@ -73,7 +100,7 @@ def login1(request):
             user = authenticate(username=request.POST['username'] , password = request.POST['password'])
             if not user or not user.is_active:
                 return render_to_response('index.html', {'form': form})
-            
+
             #print("user===",user)
             #print(user.username)
             print(request)
@@ -102,6 +129,7 @@ def register(request):
             email =  userObj['email']
             username = email
             password =userObj['password']
+            college =userObj['college']
             confirm = userObj['confirmpass']
             contact = userObj['contact']
             print("Username and password and confirmpassword is as follows:- ", username,password,confirm,"\n\n\n\n")
@@ -112,7 +140,7 @@ def register(request):
                 to_list = [email]
                 print(os.getcwd())
                 html_message = loader.render_to_string(
-                    os.getcwd()+'/Breeze/templates/SigningupMail.html',
+                    os.getcwd()+'/Breeze18/Breeze/templates/SigningupMail.html',
                     {
                         'name' : name,
                         # 'user_name': username,
@@ -152,7 +180,7 @@ def forgotmail(request):
     if request.method == "POST" :
         form=ForgotPassMailForm(request.POST)
         print(form)
-        if form.is_valid    ():    
+        if form.is_valid    ():
             print("Form Validation Successful")
             subject = "Forgot Password mail from Breeze 18 successful."
             message = "You can change your password here:-  "
@@ -164,7 +192,7 @@ def forgotmail(request):
             try:
                 user=User.objects.filter(email=request.POST['email'].strip())[0]
                 print("user=",user)
-                ForgetPass.objects.create(token=url_hash,user=user)                
+                ForgetPass.objects.create(token=url_hash,user=user)
             except:
                 raise forms.ValidationError("Email Doesn't Exist")
             html_message = loader.render_to_string(
@@ -180,7 +208,7 @@ def forgotmail(request):
                 }
             )
             try:
-                send_mail(subject, message, "Breeze'18 "+from_email, to_list, fail_silently=False, html_message=html_message)                
+                send_mail(subject, message, "Breeze'18 "+from_email, to_list, fail_silently=False, html_message=html_message)
             except Exception as e:
                 print("Mail not sent")
                 print (e.message, e.args)

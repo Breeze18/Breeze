@@ -1,0 +1,72 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registration form</title>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'assets/css/register_login_form.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{% static 'js/form.js' %}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:#A0E19F;">
+  <div class="container">
+    <div id="logo" class="img-responsive"></div>
+    <div class="row">
+      <div class="col-sm-8 col-centered" id="form" style="background-color:#FFF0D9; padding-right:40px; padding-top: 1px;">
+        <legend><h1 style="font-size: 20px; letter-spacing: 5px;"><center>REGISTRATION FORM</center></h1></legend>
+          <div class="form-group">
+            <label class="control-label">E-MAIL</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input name="email" value="{{ user.email }}" class="form-control" type="text" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">EVENT NAME</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+                <input  name="name" value="{{ event.name }}" class="form-control"  type="text" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">EVENT FEE</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                <input  name="name" value="{{ event.fee }}" class="form-control"  type="text" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">EVENT DATE</label>
+            <div class="inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                <input  name="name" value="{{ event.date }}" class="form-control"  type="text" readonly>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <form class="form" action="/me" method="post">
+              <input type="submit" class="btn btn-primary" name="confirm" value="Confirm">
+              <input type="hidden" name="event" value="{{ event.id }}">
+              {% csrf_token %}
+            </form>
+            <button type="button" onclick="location.href='/'" class="btn btn-primary">Cancel</button>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

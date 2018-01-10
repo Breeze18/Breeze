@@ -12,6 +12,7 @@ class UserRegistrationForm(forms.Form):
         label = 'Email',
         max_length = 32,
     )
+    
     contact = forms.CharField(
         required = True,
         label = 'Contact',

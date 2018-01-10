@@ -6,10 +6,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=18 , null=False)
     contact = models.CharField(max_length=18 , null=False)
-    # college = models.CharField(max_length= 100, null=False)
+    # college = models.CharField(max_length= 100, null=True)
     def __str__(self):
         return self.user.email
-    
+
 class Event(models.Model):
     """
     Model representing an event.
@@ -54,10 +54,12 @@ class Event(models.Model):
 
 class Registration(models.Model):
     eventId = models.ForeignKey(Event, on_delete=models.CASCADE, null=False)
-    userId = models.ForeignKey(Profile, on_delete=models.CASCADE, null=False)
-    transaction_id=models.CharField(max_length = 200, default="Unpaid")
+    userId = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    payable = models.DecimalField(decimal_places=2, max_digits=8, null=True)
+    registration_id=models.CharField(max_length = 200,unique=True, default='')
+    transaction_status=models.CharField(max_length = 200, default="Unpaid")
     def __str__(self):
-    	return '%s by %s'%(self.eventId,self.userId)
+    	return '%s %s'%(self.registration_id, self.eventId.fee)
 
 class Formdata(models.Model):
     name= models.CharField(max_length = 32, null=False)
