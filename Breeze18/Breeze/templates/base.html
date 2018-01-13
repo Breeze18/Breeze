@@ -20,7 +20,6 @@ maximum-scale=1.0, user-scalable=no" />
 </head>
 
 <body data-spy="scroll" data-target="#site-nav">
-
   <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
           <div class="container">
               <div class="navbar-header">
@@ -43,21 +42,23 @@ maximum-scale=1.0, user-scalable=no" />
 
               <div class="collapse navbar-collapse" id="navbar-items">
                   <ul class="nav navbar-nav navbar-right">
-
                       <!-- navigation menu -->
                       <li class="active"><a data-scroll href="#about">About</a></li>
                       <li><a href="#modalEvent" data-toggle="modal">Events</a></li>
                       <li><a data-scroll href="#gallery">Highlights</a></li>
-                      <li><a data-scroll href="#contact-us">Team</a></li>
-                      <li><a data-scroll href="#sponsor">Partners</a></li>
+                      <li><a data-scroll href="#contact">Team</a></li>
+                      <li><a data-scroll href="#partners">Partners</a></li>
                     {% if user.is_authenticated %}
-                        <li class="dropdown">
+                        <li class="dropdown hidden-xs">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.profile.name }} <i class="ion-android-arrow-dropdown icon-ion"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/me">My Purchases</a></li>
                                 <li><a href="/logout">Logout</a></li>
                             </ul>
+                            <li><a class="visible-xs" href="/me">My Purchases</a></li>
+                            <li><a class="visible-xs" href="/logout">Logout</a></li>
                         </li>
+
                     {% else %}
                         <li><a href="#modal" data-toggle="modal">Login & Register</a></li>
                     {% endif %}
@@ -67,12 +68,12 @@ maximum-scale=1.0, user-scalable=no" />
       </nav>
 
   {% block content %}{% endblock %}
-
   <footer class="site-footer">
           <div class="container">
               <div class="row">
                   <div class="col-md-12">
-                      <p class="site-info">&copy; 2018, Breeze Web and App <a href="https://priyanshrastogi.com">Team</a>.</p>
+                      <p class="site-info">For Any Queries, Please Call Us At<br><a href="tel:+918448774882">+91 8448774882</a></p><br>
+                      <p class="site-info">&copy; 2018, Breeze.</p>
                       <ul class="social-block">
                           <li><a href="https://www.facebook.com/snu.breeze/"><i class="ion-social-facebook"></i></a></li>
                           <li><a href="https://twitter.com/snu_breeze"><i class="ion-social-twitter"></i></a></li>
@@ -84,6 +85,11 @@ maximum-scale=1.0, user-scalable=no" />
       </footer>
   <!-- script -->
     <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script>
+        jQuery(window).load(function () {
+            jQuery(".preloader").fadeOut(500);
+        });
+    </script>
     <script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'bower_components/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>

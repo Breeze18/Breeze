@@ -10,9 +10,18 @@
 <link rel="stylesheet" href="{% static "assets/css/specificevent.css" %}">
 </head>
 <body style="background-color:#A0E19F" >
+	<div class="logo-container">
+		<div class="container">
+			<div id="logo" class="img-responsive"></div>
+		</div>
+	</div>
 	<div class="container" id="top" style="background-color:#FFF0D9;">
-	<legend><h1 style="font-size: 20px; letter-spacing: 5px; text-transform: uppercase;"><center>{{ subcategory }} EVENTS</center></h1></legend>
-
+	<legend><h1 style="font-size: 20px; letter-spacing: 5px; text-transform: uppercase;"><center>{{ events.0.subCategoryName }} EVENTS</center></h1></legend>
+		{% if events|length == 0 %}
+		<center>
+			<h1>TBA</h1>
+		</center>
+		{% endif %}
 		<ul class="nav nav-tabs nav-justified" style="background-color: #dacdba;font-family:'Montserrat'; border-radius: 0px;">
 			{% for event in events %}
 			{% if forloop.first %}
@@ -40,7 +49,7 @@
 					</div>
 					<div class="row">
 						<h3 class="captions"><b>Rules</b></h3>
-						<p>{{ event.rules }}</p>
+						{% autoescape off %}{{ event.rules }}{% endautoescape %}
 					</div>
 					<div class="row">
 						<h3 class="captions"><b>Prize</b></h3>
@@ -51,28 +60,27 @@
 						<h3 class="captions"><b>Details</b></h3>
 						<p><b>Date: {{ event.date }}</b><br/>
 						<b>Venue: {{ event.venue }}</b><br/>
+<b>Registration Fees: {% if event.fee != 0 %} {{ event.fee }} {% if event.fee_type == "team" %} Per Team {% else %} Per Head
+	{% endif %} {% else %} FREE {% endif %}</b>
 						</p>
 					</div>
 					<div class="row">
 						<h3 class="captions"><b>Contact</b></h3>
 						<p><b>{{ event.contact_market }} - <a href="tel:{{ event.phone_market }}">{{ event.phone_market }}</b></a><br/>
-						<b>{{ event.contact_spons }} - <a href="tel:{{ event.phone_spons }}">{{ event.phone_spons }}</b></a><br/>
-						<b>{{ event.contact_pr }} - <a href="tel:{{ event.phone_pr }}">{{ event.phone_pr }}</b></a><br/>
 						</p>
 						<br><br>
 					</div>
 					<div class="row">
 						<form class="" action="{% url 'event_register' %}" method="post">
-							 {% csrf_token %}
+							{% csrf_token %}
 							<input type="hidden" name="event_id" value="{{ event.id }}">
 							<input type="submit" name="" value="Register" class="btn btn-block" style="text-transform: uppercase;">
-
 						</form>
 							<br>
 					</div>
 				</div>
 				{% endfor %}
-	</div>
+			</div>
 		</div>
 		<br><br><br>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
